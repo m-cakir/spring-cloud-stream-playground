@@ -1,0 +1,29 @@
+subprojects {
+    apply plugin:'java'
+
+    sourceCompatibility = '1.8'
+
+    repositories {
+        mavenCentral()
+    }
+
+    ext {
+        set('springDependencyManagementVersion', "1.0.10.RELEASE")
+        set('springBootVersion', "2.3.5.RELEASE")
+        set('springCloudVersion', "Hoxton.SR8")
+    }
+
+    configurations {
+
+        compileOnly {
+            extendsFrom annotationProcessor
+        }
+
+        runtime.exclude module: 'spring-boot-starter-tomcat'
+        compile.exclude module: 'spring-boot-starter-tomcat'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}
