@@ -1,0 +1,11 @@
+server:
+  port: 8081
+
+spring:
+  cloud:
+    stream:
+      function:
+        definition: messageConsumer
+      bindings:
+        messageConsumer-in-0:
+          destination: simple.message.topic
