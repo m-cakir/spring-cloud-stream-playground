@@ -21,7 +21,7 @@ public class StartupRunner implements CommandLineRunner {
         event.setUsername("Heisenberg");
         event.setMessage("say my name");
 
-        log.info("event-message will be sent to kafka, event={}", event);
+        log.info("event-message will be sent to kafka ::: event={}", event);
 
         messageProcessor.onNext(event);
     }
