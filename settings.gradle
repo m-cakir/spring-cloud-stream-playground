@@ -3,4 +3,5 @@ rootProject.name = 'spring-cloud-stream-playground'
 include 'producer-with-emitter-processor'
 include 'simple-consumer'
 include 'simple-producer'
+include 'consumer-dlq'
 

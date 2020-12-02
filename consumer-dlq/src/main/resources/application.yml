@@ -1,0 +1,23 @@
+server:
+  port: 8082
+
+spring:
+  cloud:
+    stream:
+      function:
+        definition: messageConsumer;dlqConsumer
+      bindings:
+        messageConsumer-in-0:
+          destination: simple.message.topic
+          group: simple-group
+          consumer:
+            max-attempts: 3
+            default-retryable: true
+        dlqConsumer-in-0:
+          destination: error.simple.message.topic.simple-group
+          group: simple-dlq-group
+      kafka:
+        bindings:
+          messageConsumer-in-0:
+            consumer:
+              enableDlq: true
