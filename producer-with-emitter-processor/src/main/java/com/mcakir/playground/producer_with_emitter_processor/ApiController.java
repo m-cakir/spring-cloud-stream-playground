@@ -3,26 +3,32 @@ package com.mcakir.playground.producer_with_emitter_processor;
 import com.mcakir.playground.producer_with_emitter_processor.domain.EventMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Service;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.EmitterProcessor;
 
-//@Service
+@RestController
+@RequestMapping("api")
 @Slf4j
 @RequiredArgsConstructor
-public class StartupRunner implements CommandLineRunner {
-
+public class ApiController {
     private final EmitterProcessor<EventMessage> messageProcessor;
 
-    @Override
-    public void run(String... args) throws Exception {
+    @GetMapping
+    public ResponseEntity<?> get(@RequestParam String username) {
 
         EventMessage event = new EventMessage();
-        event.setUsername("Heisenberg");
+        event.setUsername(username);
         event.setMessage("say my name");
 
         log.info("event-message will be sent to kafka ::: event={}", event);
 
         messageProcessor.onNext(event);
+
+        return ResponseEntity.ok(event);
     }
+
 }
