@@ -1,4 +1,4 @@
-package com.mcakir.playground.producer_with_emitter_processor.domain;
+package com.mcakir.playground.producer_with_emitter_processor;
 
 import lombok.Data;
 

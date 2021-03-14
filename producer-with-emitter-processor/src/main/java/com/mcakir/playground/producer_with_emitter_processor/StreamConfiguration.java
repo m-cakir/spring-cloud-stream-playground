@@ -1,6 +1,5 @@
-package com.mcakir.playground.producer_with_emitter_processor.config;
+package com.mcakir.playground.producer_with_emitter_processor;
 
-import com.mcakir.playground.producer_with_emitter_processor.domain.EventMessage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
