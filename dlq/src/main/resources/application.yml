@@ -1,0 +1,27 @@
+server:
+  port: 8082
+
+spring:
+  cloud:
+    stream:
+      default:
+        group: simple-group
+      kafka:
+        default:
+          consumer:
+            enableDlq: true
+        binder:
+          brokers: localhost
+          defaultBrokerPort: 9092
+          autoCreateTopics: true
+        bindings:
+          dlqConsumer-in-0:
+            consumer:
+              enableDlq: false
+      function:
+        definition: messageConsumer;dlqConsumer
+      bindings:
+        messageConsumer-in-0:
+          destination: simple.message.topic
+        dlqConsumer-in-0:
+          destination: error.simple.message.topic.simple-group

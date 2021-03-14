@@ -1,13 +1,13 @@
-package com.mcakir.playground.consumer_dlq;
+package com.mcakir.playground.dlq;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ConsumerDlqApplication {
+public class DlqApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ConsumerDlqApplication.class, args);
+        SpringApplication.run(DlqApplication.class, args);
     }
 
 }

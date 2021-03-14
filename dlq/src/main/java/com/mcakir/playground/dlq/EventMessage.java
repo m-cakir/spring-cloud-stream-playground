@@ -1,4 +1,4 @@
-package com.mcakir.playground.consumer_dlq.domain;
+package com.mcakir.playground.dlq;
 
 import lombok.Data;
 
