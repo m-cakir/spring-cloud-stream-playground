@@ -1,13 +1,13 @@
-package com.mcakir.playground.simple_consumer;
+package com.mcakir.playground.simple;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SimpleConsumerApplication {
+public class SimpleApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SimpleConsumerApplication.class, args);
+        SpringApplication.run(SimpleApplication.class, args);
     }
 
 }

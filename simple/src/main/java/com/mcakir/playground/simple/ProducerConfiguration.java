@@ -1,10 +1,11 @@
-package com.mcakir.playground.simple_producer.producer;
+package com.mcakir.playground.simple;
 
-import com.mcakir.playground.simple_producer.domain.EventMessage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.Random;
+import java.util.UUID;
 import java.util.function.Supplier;
 
 @Configuration
@@ -14,11 +15,13 @@ public class ProducerConfiguration {
     @Bean
     public Supplier<EventMessage> messageProducer() {
         return () -> {
+
             EventMessage event = new EventMessage();
-            event.setUsername("Heisenberg");
+            event.setId(UUID.randomUUID().toString());
+            event.setUsername(new Random().nextBoolean() ? "heisenberg" : "mcakir");
             event.setMessage("say my name");
 
-            log.info("event-message will be sent to kafka ::: event={}", event);
+            log.info("[produced] event-message ::: event={}", event);
 
             return event;
         };

@@ -1,6 +1,5 @@
-package com.mcakir.playground.simple_consumer.consumer;
+package com.mcakir.playground.simple;
 
-import com.mcakir.playground.simple_consumer.domain.EventMessage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,9 +12,7 @@ public class ConsumerConfiguration {
 
     @Bean
     public Consumer<EventMessage> messageConsumer() {
-        return payload -> {
-            log.info("event-message received ::: {}", payload);
-        };
+        return payload -> log.info("[consumed] event-message ::: {}", payload);
     }
 
 }
