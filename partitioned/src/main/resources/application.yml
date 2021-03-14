@@ -1,0 +1,32 @@
+server:
+  port: 8082
+
+spring:
+  cloud:
+    stream:
+      default:
+        group: partitioned-group
+        producer:
+          partitionKeyExpression: payload.username
+          partitionCount: 4
+        consumer:
+          partitioned: true
+          concurrency: 2 # partitionCount = concurrency * instance
+      kafka:
+        default:
+          consumer:
+            enableDlq: true
+            dlqPartitions: 1
+        binder:
+          brokers: localhost
+          defaultBrokerPort: 9092
+          autoCreateTopics: true
+          autoAddPartitions: true
+          replicationFactor: 1
+      function:
+        definition: messageProducer;messageConsumer
+      bindings:
+        messageProducer-out-0:
+          destination: simple.message.topic
+        messageConsumer-in-0:
+          destination: simple.message.topic
